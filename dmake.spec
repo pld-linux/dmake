@@ -1,7 +1,7 @@
 Summary:	Distributed Make
 Name:		dmake
 Version:	4.11
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Development/Building
 Source0:	http://tools.openoffice.org/dmake/%{name}_%{version}.zip
@@ -28,11 +28,14 @@ environment.
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+install -D man/dmake.tf $RPM_BUILD_ROOT%{_mandir}/man1/dmake.1
 
 %files
 %defattr(644,root,root,755)
+%doc ChangeLog NEWS readme/release.txt readme/public/unix.txt 
 %attr(755,root,root) %{_bindir}/%{name}
 %{_datadir}/dmake
+%{_mandir}/man1/dmake.1*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
